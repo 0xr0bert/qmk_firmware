@@ -11,7 +11,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_ESC,  US_1,    US_2,    US_3,    US_4,    US_5,                         US_6,    US_7,    US_8,    US_9,    US_0,    US_MINS,
         CW_TOGG, US_Q,    US_W,    US_F,    US_P,    US_B,                         US_J,    US_L,    US_U,    US_Y, US_SCLN,     US_EQL,
         KC_BSPC, US_A,    US_R,    US_S,    US_T,    US_G,                         US_M,    US_N,    US_E,    US_I,    US_O,    US_ACUT,
-        US_BSLS,GUI_T(US_Z),ALT_T(US_X),CTL_T(US_C),SFT_T(US_D),    US_V,                         US_K,SFT_T(US_H),CTL_T(US_COMM),ALGR_T(US_DOT),GUI_T(US_SLSH),US_DGRV,
+        US_BSLS,GUI_T(US_Z),ALT_T(US_X),CTL_T(US_C),SFT_T(US_D),US_V,              US_K,SFT_T(US_H),CTL_T(US_COMM),ALGR_T(US_DOT),GUI_T(US_SLSH),US_DGRV,
                                     LT(1,KC_SPC),  KC_TAB,                         KC_DEL, LT(2,KC_ENT)
     ),
     [1] = LAYOUT(
@@ -29,3 +29,67 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                      _______, _______,    _______, _______
     ),
 };
+extern rgb_config_t rgb_matrix_config;
+
+void keyboard_post_init_user(void) {
+  rgb_matrix_enable();
+}
+
+#define RGB_RDC {255, 0, 0}
+#define RGB_IND {0x61, 0, 0xFF}
+#define RGB_BRN {0, 240, 255}
+#define RGB_WTR {0, 14, 255}
+#define RGB_NGT {0, 5, 84}
+#define RGB_YLW {0xFF, 0xF5, 0}
+#define RGB_BLK {0, 0, 0}
+
+const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
+    [1] = {
+        // left
+        RGB_RDC, RGB_RDC, RGB_RDC, RGB_RDC, RGB_RDC, RGB_RDC,
+        RGB_IND, RGB_IND, RGB_IND, RGB_IND, RGB_IND, RGB_IND,
+        RGB_NGT, RGB_IND, RGB_IND, RGB_IND, RGB_YLW, RGB_YLW,
+        RGB_NGT, RGB_NGT, RGB_YLW, RGB_YLW, RGB_YLW, RGB_YLW,
+                                            RGB_RDC, RGB_NGT,
+        // right
+        RGB_RDC, RGB_RDC, RGB_RDC, RGB_RDC, RGB_RDC, RGB_RDC,
+        RGB_BRN, RGB_BRN, RGB_BRN, RGB_WTR, RGB_WTR, RGB_RDC,
+        RGB_BRN, RGB_BRN, RGB_BRN, RGB_WTR, RGB_WTR, RGB_NGT,
+        RGB_BRN, RGB_BRN, RGB_BRN, RGB_WTR, RGB_WTR, RGB_WTR,
+        RGB_BLK, RGB_BRN
+    },
+
+};
+
+void set_layer_color(int layer) {
+  for (int i = 0; i < RGB_MATRIX_LED_COUNT; i++) {
+    RGB rgb = {
+      .r = pgm_read_byte(&ledmap[layer][i][0]),
+      .g = pgm_read_byte(&ledmap[layer][i][1]),
+      .b = pgm_read_byte(&ledmap[layer][i][2]),
+    };
+    if (!rgb.r && !rgb.g && !rgb.b) {
+        rgb_matrix_set_color( i, 0, 0, 0 );
+    } else {
+        float f = (float)rgb_matrix_config.hsv.v / UINT8_MAX;
+        rgb_matrix_set_color( i, f * rgb.r, f * rgb.g, f * rgb.b );
+    }
+  }
+}
+
+bool rgb_matrix_indicators_user(void) {
+  if (keyboard_config.disable_layer_led) { return false; }
+  switch (biton32(layer_state)) {
+    case 1:
+      set_layer_color(1);
+      break;
+    case 2:
+      set_layer_color(2);
+      break;
+   default:
+    if (rgb_matrix_get_flags() == LED_FLAG_NONE)
+      rgb_matrix_set_color_all(0, 0, 0);
+    break;
+  }
+  return true;
+}
