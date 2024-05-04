@@ -42,6 +42,7 @@ void keyboard_post_init_user(void) {
 #define RGB_NGT {0, 5, 84}
 #define RGB_YLW {0xFF, 0xF5, 0}
 #define RGB_BLK {0, 0, 0}
+#define RGB_SPK {0, 0x75, 0xFF}
 
 const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
     [1] = {
@@ -58,7 +59,20 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
         RGB_BRN, RGB_BRN, RGB_BRN, RGB_WTR, RGB_WTR, RGB_WTR,
         RGB_BLK, RGB_BRN
     },
-
+    [2] = {
+        // left
+        RGB_YLW, RGB_YLW, RGB_YLW, RGB_YLW, RGB_YLW, RGB_YLW,
+        RGB_BLK, RGB_BLK, RGB_WTR, RGB_WTR, RGB_WTR, RGB_BLK,
+        RGB_BLK, RGB_BRN, RGB_BRN, RGB_BRN, RGB_BRN, RGB_BLK,
+        RGB_BLK, RGB_BLK, RGB_BLK, RGB_BLK, RGB_BLK, RGB_BLK,
+                                            RGB_BLK, RGB_BLK,
+        // right
+        RGB_BLK, RGB_BLK, RGB_BLK, RGB_BLK, RGB_BLK, RGB_RDC,
+        RGB_YLW, RGB_YLW, RGB_WTR, RGB_YLW, RGB_BLK, RGB_BLK,
+        RGB_YLW, RGB_WTR, RGB_WTR, RGB_WTR, RGB_BLK, RGB_BLK,
+        RGB_BLK, RGB_SPK, RGB_SPK, RGB_BLK, RGB_BLK, RGB_BLK,
+        RGB_BLK, RGB_RDC
+    },
 };
 
 void set_layer_color(int layer) {
