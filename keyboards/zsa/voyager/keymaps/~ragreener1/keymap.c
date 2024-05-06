@@ -5,7 +5,7 @@
 
 #include QMK_KEYBOARD_H
 
-#include "keymap_extras/keymap_us_international.h"
+#include "keymap_extras/keymap_uk.h"
 
 enum layers {
   BASE,
@@ -15,22 +15,22 @@ enum layers {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [BASE] = LAYOUT(
-        KC_ESC,  US_1,    US_2,    US_3,    US_4,    US_5,                         US_6,    US_7,    US_8,    US_9,    US_0,    US_MINS,
-        CW_TOGG, US_Q,    US_W,    US_F,    US_P,    US_B,                         US_J,    US_L,    US_U,    US_Y, US_SCLN,     US_EQL,
-        KC_BSPC, US_A,    US_R,    US_S,    US_T,    US_G,                         US_M,    US_N,    US_E,    US_I,    US_O,    US_ACUT,
-        US_BSLS,GUI_T(US_Z),ALT_T(US_X),CTL_T(US_C),SFT_T(US_D),US_V,              US_K,SFT_T(US_H),CTL_T(US_COMM),ALGR_T(US_DOT),GUI_T(US_SLSH),US_DGRV,
+        KC_ESC,  UK_1,    UK_2,    UK_3,    UK_4,    UK_5,                         UK_6,    UK_7,    UK_8,    UK_9,    UK_0,    UK_MINS,
+        CW_TOGG, UK_Q,    UK_W,    UK_F,    UK_P,    UK_B,                         UK_J,    UK_L,    UK_U,    UK_Y, UK_SCLN,     UK_EQL,
+        KC_BSPC, UK_A,    UK_R,    UK_S,    UK_T,    UK_G,                         UK_M,    UK_N,    UK_E,    UK_I,    UK_O,    UK_QUOT,
+        UK_BSLS,GUI_T(UK_Z),ALT_T(UK_X),CTL_T(UK_C),SFT_T(UK_D),UK_V,              UK_K,SFT_T(UK_H),CTL_T(UK_COMM),ALGR_T(UK_DOT),GUI_T(UK_SLSH),UK_HASH,
                                     LT(1,KC_SPC),  KC_TAB,                         KC_DEL, LT(2,KC_ENT)
     ),
     [SYMB] = LAYOUT(
         KC_ESC,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                        KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
-        KC_CAPS, US_EXLM, US_AT,   US_HASH, US_DLR,  US_PERC,                      US_7,    US_8,    US_9,    US_MINS, US_SLSH, KC_F12,
-        KC_LALT, US_DCIR, US_AMPR, US_ASTR, US_LPRN, US_RPRN,                      US_4,    US_5,    US_6,    US_PLUS, US_ASTR, KC_BSPC,
-        KC_LCTL, KC_LSFT, US_LBRC, KC_RBRC, US_LCBR, US_RCBR,                      US_1,    US_2,    US_3,    US_DOT,  US_EQL,  KC_ENT,
-                                                     _______, KC_LGUI,    KC_ALGR, US_0
+        UK_GRV, UK_EXLM, UK_DQUO,   UK_PND, UK_DLR,  UK_PERC,                      UK_7,    UK_8,    UK_9,    UK_MINS, UK_SLSH, KC_F12,
+        KC_LALT, UK_CIRC, UK_AMPR, UK_ASTR, UK_LPRN, UK_RPRN,                      UK_4,    UK_5,    UK_6,    UK_PLUS, UK_ASTR, KC_BSPC,
+        KC_LCTL, KC_LSFT, UK_LBRC, UK_RBRC, UK_LCBR, UK_RCBR,                      UK_1,    UK_2,    UK_3,    UK_DOT,  UK_EQL,  KC_ENT,
+                                                     _______, KC_LGUI,    KC_ALGR, UK_0
     ),
     [SYS] = LAYOUT(
         RGB_TOG, QK_KB,   RGB_MOD, RGB_M_P, RGB_VAD, RGB_VAI,                      _______, _______, _______, _______, _______, QK_BOOT,
-        _______, _______, KC_VOLD, KC_VOLU, KC_MUTE, _______,                      KC_PGUP, KC_HOME, KC_UP,   KC_END,  _______, _______,
+        KC_CAPS, _______, KC_VOLD, KC_VOLU, KC_MUTE, _______,                      KC_PGUP, KC_HOME, KC_UP,   KC_END,  _______, _______,
         _______, KC_MPRV, KC_MNXT, KC_MSTP, KC_MPLY, _______,                      KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, _______, _______,
         _______, _______, _______, _______, _______, _______,                      _______, C(S(KC_TAB)), C(KC_TAB), _______, _______, _______,
                                                      _______, _______,    _______, _______
@@ -55,7 +55,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
     [SYMB] = {
         // left
         RGB_RDC, RGB_RDC, RGB_RDC, RGB_RDC, RGB_RDC, RGB_RDC,
-        RGB_RDC, RGB_IND, RGB_IND, RGB_IND, RGB_IND, RGB_IND,
+        RGB_IND, RGB_IND, RGB_IND, RGB_IND, RGB_IND, RGB_IND,
         RGB_NGT, RGB_IND, RGB_IND, RGB_IND, RGB_YLW, RGB_YLW,
         RGB_NGT, RGB_NGT, RGB_YLW, RGB_YLW, RGB_YLW, RGB_YLW,
                                             RGB_RDC, RGB_NGT,
@@ -69,7 +69,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
     [SYS] = {
         // left
         RGB_YLW, RGB_YLW, RGB_YLW, RGB_YLW, RGB_YLW, RGB_YLW,
-        RGB_BLK, RGB_BLK, RGB_WTR, RGB_WTR, RGB_WTR, RGB_BLK,
+        RGB_RDC, RGB_BLK, RGB_WTR, RGB_WTR, RGB_WTR, RGB_BLK,
         RGB_BLK, RGB_BRN, RGB_BRN, RGB_BRN, RGB_BRN, RGB_BLK,
         RGB_BLK, RGB_BLK, RGB_BLK, RGB_BLK, RGB_BLK, RGB_BLK,
                                             RGB_BLK, RGB_BLK,
