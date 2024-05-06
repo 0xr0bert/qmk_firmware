@@ -55,7 +55,7 @@ const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
     [SYMB] = {
         // left
         RGB_RDC, RGB_RDC, RGB_RDC, RGB_RDC, RGB_RDC, RGB_RDC,
-        RGB_IND, RGB_IND, RGB_IND, RGB_IND, RGB_IND, RGB_IND,
+        RGB_RDC, RGB_IND, RGB_IND, RGB_IND, RGB_IND, RGB_IND,
         RGB_NGT, RGB_IND, RGB_IND, RGB_IND, RGB_YLW, RGB_YLW,
         RGB_NGT, RGB_NGT, RGB_YLW, RGB_YLW, RGB_YLW, RGB_YLW,
                                             RGB_RDC, RGB_NGT,
