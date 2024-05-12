@@ -23,9 +23,9 @@ const snled27351_led_t g_snled27351_leds[RGB_MATRIX_LED_COUNT] = {
 /* Refer to SNLED27351 manual for these locations
  *   driver
  *   |  R location
- *   |  |      G location
- *   |  |      |        B location
- *   |  |      |        | */
+ *   |  |       G location
+ *   |  |       |       B location
+ *   |  |       |       | */
     {0, F_2,   D_2,     E_2},
     {0, F_3,   D_3,     E_3},
     {0, F_4,   D_4,     E_4},
@@ -122,6 +122,7 @@ const snled27351_led_t g_snled27351_leds[RGB_MATRIX_LED_COUNT] = {
     {1, F_2,    D_2,    E_2},
     {1, F_1,    D_1,    E_1},
 };
+<<<<<<< HEAD
 
 #define __ NO_LED
 
@@ -154,4 +155,6 @@ led_config_t g_led_config = {
         1, 1, 1, 1, 1,       1, 1, 1, 1,       1, 1, 1
     }
 };
+=======
+>>>>>>> b24ca89db7 (Current WIP)
 #endif
