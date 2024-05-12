@@ -54,10 +54,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [WIN_FN] = LAYOUT_91_iso(
         RGB_TOG,    _______,  KC_BRID,  KC_BRIU,  KC_TASK,  KC_FILE,  RGB_VAD,   RGB_VAI,  KC_MPRV,  KC_MPLY,  KC_MNXT,  KC_MUTE,  KC_VOLD,   KC_VOLU,  _______,            QK_BOOT,
         _______,    _______,  BT_HST1,  BT_HST2,  BT_HST3,  _______,  _______,   _______,  _______,  _______,  _______,  _______,  _______,   _______,  KC_CAPS,            _______,
-        _______,    RGB_TOG,  RGB_MOD,  RGB_VAI,  RGB_HUI,  RGB_SAI,  RGB_SPI,   _______,  _______,  _______,  _______,  _______,  _______,   _______,                      _______,
-        _______,    _______,  RGB_RMOD, RGB_VAD,  RGB_HUD,  RGB_SAD,  RGB_SPD,   _______,  _______,  _______,  _______,  _______,  _______,   _______,  _______,            KC_END,
-        _______,    _______,  _______,  _______,  _______,  _______,  _______,   BAT_LVL,  BAT_LVL,  NK_TOGG,  _______,  _______,  _______,   _______,  _______,  _______,
-        _______,    _______,  _______,            _______,  _______,  _______,             _______,            _______,            _______,             _______,  _______,  _______),
+        _______,    RGB_TOG,  RGB_MOD,  RGB_VAI,  RGB_HUI,  RGB_SAI,  RGB_SPI,      UK_7,     UK_8,     UK_9,  UK_MINS,   UK_SLSH, _______,  _______,                  _______,
+        _______,    _______,  RGB_RMOD, RGB_VAD,  RGB_HUD,  RGB_SAD,  RGB_SPD,      UK_4,     UK_5,     UK_6,  UK_PLUS,   UK_ASTR,  KC_BSPC, _______,  _______,           KC_END,
+        _______,    _______,  _______,  _______,  _______,  _______,  _______,   BAT_LVL,     XXXXXXX,     UK_1,     UK_2,     UK_3,   UK_DOT,    UK_EQL,   KC_ENT,  _______,
+        _______,    _______,  _______,            _______,  _______,  _______,             UK_0,            _______,            _______,             _______,  _______,  _______),
 };
 
 #if defined(ENCODER_MAP_ENABLE)
