@@ -16,9 +16,8 @@ SWAP_HANDS_ENABLE = yes
 RGB_MATRIX_ENABLE = yes
 CAPS_WORD_ENABLE = yes
 COMBO_ENABLE = yes
+CUSTOM_MATRIX = lite
 
-#project specific files
+# project specific files
 SRC += matrix.c
 I2C_DRIVER_REQUIRED = yes
-
-MOUSE_SHARED_EP = no
